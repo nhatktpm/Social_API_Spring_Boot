@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -20,17 +21,17 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post findPostById(int idPost) {
-        return postRepository.getById(idPost);
+    public Optional<Post> getPostById(int idPost) {
+        return postRepository.findById(idPost);
     }
 
     @Override
-    public void savePost(Post post) {
-    this.postRepository.save(post);
+    public Post savePost(Post post) {
+       return postRepository.save(post);
     }
 
     @Override
-    public void deletePostById(int id) {
-    this.postRepository.deleteById(id);
+    public void deletePostById(Post post) {
+        this.postRepository.delete(post);
     }
 }

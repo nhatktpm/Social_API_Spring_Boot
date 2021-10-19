@@ -22,16 +22,15 @@ public class UserCtrl {
         return userService.getAllUser();
     }
 
-    @GetMapping("user/{idUser}")
+    @GetMapping("user/{id}")
     public User getUserById(
-            @PathVariable("idUser") Integer id) {
-
+            @PathVariable("id") Integer id) {
         return userService.getUserById(id).orElseThrow(() -> new NotFoundException("User not found for this id : " + id));
     }
 
-    @PutMapping("user/{idUser}")
+    @PutMapping("user/{id}")
     public ResponseEntity<User> updateUser(
-            @PathVariable(value = "idUser") Integer idUser,
+            @PathVariable(value = "id") Integer idUser,
             @RequestBody User userDetail
     ) {
         User user = userService.getUserById(idUser).orElseThrow(() -> new NotFoundException("User not found for this id : " + idUser));;
