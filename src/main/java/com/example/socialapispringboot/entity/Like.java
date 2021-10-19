@@ -20,12 +20,10 @@ public class Like {
     @Column(name = "state")
     private int state;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    Post post;
+    @Column(name = "post_id")
+    private int idPost;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
+    @Column(name = "user_id")
+    private int idUser;
 
 }

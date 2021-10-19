@@ -27,13 +27,15 @@ public class Post {
     @Temporal(TemporalType.DATE)
     private Date update_date;
 
-    @ManyToOne
-    @JoinColumn(name = "poster")
-    User user;
+    @Column(name = "poster")
+    private int idUser;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
     List<Like> likes ;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
     List<Comment> comments ;
+
 }
