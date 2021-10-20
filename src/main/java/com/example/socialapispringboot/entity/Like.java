@@ -26,4 +26,11 @@ public class Like {
     @Column(name = "user_id")
     private int idUser;
 
+    public Like(int state, int idUser, int idPost) {
+        this.state = state;
+        this.idUser = idUser;
+        this.idPost = idPost;
+
+    }
 }
+

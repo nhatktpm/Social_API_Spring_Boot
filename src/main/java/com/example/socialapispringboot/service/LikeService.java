@@ -2,9 +2,11 @@ package com.example.socialapispringboot.service;
 
 import com.example.socialapispringboot.entity.Like;
 
+import java.util.Optional;
+
 public interface LikeService {
-    void likePost(int idUser, int idPost);
-    boolean isLikePost(int idUser, int idPost);
+    Like likePost(int idUser, int idPost);
     void  unLikePost(int idUser, int idPost);
-    int countLikePost(int idPost);
+   Like getLikeByUserAndPost(int idUser, int idPost);
+
 }
