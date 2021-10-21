@@ -24,12 +24,13 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void saveComment(Comment comment) {
-
+    public Comment saveComment(Comment comment) {
+        return commentRepository.save(comment);
     }
 
     @Override
     public void deleteCommentById(int id) {
-
+        Comment comment = commentRepository.getById(id);
+        commentRepository.delete(comment);
     }
 }
