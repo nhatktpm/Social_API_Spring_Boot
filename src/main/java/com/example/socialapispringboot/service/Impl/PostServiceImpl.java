@@ -4,6 +4,8 @@ import com.example.socialapispringboot.entity.Post;
 import com.example.socialapispringboot.repository.PostRepository;
 import com.example.socialapispringboot.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,14 @@ public class PostServiceImpl implements PostService {
     public List<Post> getAllPost() {
         return postRepository.findAll();
     }
+
+    @Override
+    public List<Post> getAllPost(int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber,pageSize);
+
+        return postRepository.findAll(pageable).getContent();
+    }
+
 
     @Override
     public Optional<Post> getPostById(int idPost) {

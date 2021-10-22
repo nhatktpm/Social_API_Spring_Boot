@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -32,5 +33,10 @@ public class CommentServiceImpl implements CommentService {
     public void deleteCommentById(int id) {
         Comment comment = commentRepository.getById(id);
         commentRepository.delete(comment);
+    }
+
+    @Override
+    public Optional<Comment> getCommentById(int idComment) {
+        return commentRepository.findById(idComment);
     }
 }

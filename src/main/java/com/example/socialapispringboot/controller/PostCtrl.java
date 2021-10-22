@@ -24,6 +24,14 @@ public class PostCtrl {
         return postService.getAllPost();
     }
 
+    @GetMapping(value = "/posts",params = {"page","limit"})
+    public List<Post> getPostList(
+            @RequestParam("page") int pageNumber,
+            @RequestParam("limit") int pageSize
+    ){
+        return postService.getAllPost(pageNumber,pageSize);
+    }
+
     @GetMapping("/post/{id}")
     public Post getPostById(
             @PathVariable("id") Integer id) {
